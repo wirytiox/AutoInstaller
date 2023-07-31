@@ -28,15 +28,6 @@ if /i "%install_steam%"=="Y" (
     echo Skipping Steam installation.
 )
 
-set /p install_discord=Do you want to install Discord? (Y/N): 
-if /i "%install_discord%"=="Y" (
-    curl -o "%USERPROFILE%\Downloads\DiscordSetup.exe" "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86"
-    "%USERPROFILE%\Downloads\DiscordSetup.exe"
-    echo Discord installation complete.
-) else (
-    echo Skipping Discord installation.
-)
-
 set /p install_lol=Do you want to install LoL? (Y/N): 
 if /i "%install_lol%"=="Y" (
     curl -o "%USERPROFILE%\Downloads\live.la1.exe" "https://lol.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.la1.exe"
