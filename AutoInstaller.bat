@@ -3,7 +3,7 @@
 choco -v >nul 2>&1
 if %errorlevel% equ 0 (
     echo Chocolatey is already installed on this system.
-    call :browser
+    
 ) else (
     echo Chocolatey is not installed on this system. Installing now...
     rd /s /q "C:\ProgramData\chocolatey"
@@ -16,7 +16,7 @@ if %errorlevel% neq 0 (
     echo curl is not installed. Installing curl...
     powershell.exe -Command "choco install curl -y"
 )
-
+call :browser
 set /p install_steam=Do you want to install Steam? (Y/N): 
 if /i "%install_steam%"=="Y" (
     if not exist "%USERPROFILE%\Downloads" mkdir "%USERPROFILE%\Downloads"
