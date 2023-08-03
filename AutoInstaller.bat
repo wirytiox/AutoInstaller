@@ -3,7 +3,7 @@
 choco -v >nul 2>&1
 if %errorlevel% equ 0 (
     echo Chocolatey is already installed on this system.
-    
+    call :browser
 ) else (
     echo Chocolatey is not installed on this system. Installing now...
     rd /s /q "C:\ProgramData\chocolatey"
@@ -16,35 +16,7 @@ if %errorlevel% neq 0 (
     echo curl is not installed. Installing curl...
     powershell.exe -Command "choco install curl -y"
 )
-call :browser
-set /p install_steam=Do you want to install Steam? (Y/N): 
-if /i "%install_steam%"=="Y" (
-    if not exist "%USERPROFILE%\Downloads" mkdir "%USERPROFILE%\Downloads"
-    curl -L -o "%USERPROFILE%\Downloads\SteamSetup.exe" "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe"
-    "%USERPROFILE%\Downloads\SteamSetup.exe"
-    del "%USERPROFILE%\Downloads\SteamSetup.exe" /q
-    echo Steam installation complete.
-) else (
-    echo Skipping Steam installation.
-)
 
-set /p install_lol=Do you want to install LoL? (Y/N): 
-if /i "%install_lol%"=="Y" (
-    curl -o "%USERPROFILE%\Downloads\live.la1.exe" "https://lol.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.la1.exe"
-    "%USERPROFILE%\Downloads\live.la1.exe"
-    echo League of Legends installation complete.
-) else (
-    echo Skipping League of Legends installation.
-)
-
-set /p install_spotify=Do you want to install Spotify? (Y/N): 
-if /i "%install_spotify%"=="Y" (
-    curl -o %USERPROFILE%\Downloads\SpotifySetup.exe https://download.scdn.co/SpotifySetup.exe
-    start "" "%USERPROFILE%\Downloads\SpotifySetup.exe"
-    echo Spotify installation complete.
-) else (
-    echo Skipping Spotify installation.
-)
 set /p install_obs=Do you want to install OBS Studio? (Y/N): 
 if /i "%install_obs%"=="Y" (
     powershell.exe -Command "choco install obs-studio -y"
@@ -85,6 +57,8 @@ echo Installing latest JDK version.
 powershell.exe -Command "choco install openjdk -y"
 echo Installing latest Python version.
 powershell.exe -Command "choco install python -y"
+echo Installing latest Nmap version.
+powershell.exe -Command "choco install nmap -y"
 echo Installing whatsapp web.
 start ms-windows-store://pdp/?productid=9NKSQGP7F2NH^&mode=mini
 
@@ -102,6 +76,8 @@ if %ERRORLEVEL% equ 0 (
         echo GPU not detected or not supported.
     )
 )
+
+
 echo Installing CS:GO make sure to log in Steam!
 start "" "steam://rungameid/730"
 :browser
