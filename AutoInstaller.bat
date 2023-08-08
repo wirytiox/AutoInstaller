@@ -10,7 +10,7 @@ if %errorlevel% equ 0 (
     powershell.exe "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
     echo Restart the Powershell and execute it with administrator privileges
 )
-
+echo
 curl --version > nul 2>&1
 if %errorlevel% neq 0 (
     echo curl is not installed. Installing curl...
