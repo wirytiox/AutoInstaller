@@ -59,8 +59,7 @@ echo Installing latest Python version.
 powershell.exe -Command "choco install python -y"
 echo Installing latest Nmap version.
 powershell.exe -Command "choco install nmap -y"
-echo Installing whatsapp web.
-start ms-windows-store://pdp/?productid=9NKSQGP7F2NH^&mode=mini
+
 
 wmic path win32_videocontroller get caption | find /i "NVIDIA" > nul
 
@@ -77,9 +76,6 @@ if %ERRORLEVEL% equ 0 (
     )
 )
 
-
-echo Installing CS:GO make sure to log in Steam!
-start "" "steam://rungameid/730"
 :browser
 echo Choose explorer (1 Brave, 2 Chrome, 3 OperaGX, 4 Skip)
 set /p explorer_choice=
