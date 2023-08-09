@@ -1,3 +1,4 @@
+@echo off
 echo Do you want to install Visual Studio Code with Chocolatey? (Y/N)
 set /p choice=
 if /i "%choice%"=="Y" (
@@ -14,3 +15,4 @@ if /i "%choice%"=="Y" (
 ) else (
     echo Skipping installation of Notepad++.
 )
+pause
