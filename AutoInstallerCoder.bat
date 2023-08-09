@@ -15,4 +15,12 @@ if /i "%choice%"=="Y" (
 ) else (
     echo Skipping installation of Notepad++.
 )
+echo Do you want to install Cheat Engine with Chocolatey? (Y/N)
+set /p choice=
+if /i "%choice%"=="Y" (
+    echo Installing Notepad++...
+    powershell.exe -Command "choco install cheat engine -y"
+) else (
+    echo Skipping installation of Notepad++.
+)
 pause
